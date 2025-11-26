@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis IPS Keren | Belajar Cepat & Elegan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1 id="app-title">Kuis IPS</h1>
+            <div id="user-info">
+                <span id="display-username"></span>
+                <i id="settings-icon" class="fas fa-cog"></i>
+            </div>
+        </header>
+        
+        <div id="name-screen" class="screen active">
+            <div class="card name-card">
+                <h2>👋 Selamat Datang!</h2>
+                <p>Masukkan nama lengkap Anda untuk memulai latihan soal.</p>
+                <input type="text" id="name-input" placeholder="Tuliskan Nama Anda di sini...">
+                <button id="submit-name" disabled>Lanjut</button>
+            </div>
+        </div>
+
+        <div id="start-menu" class="screen">
+            <div class="card start-card">
+                <h2>Siap Berlatih, <span id="welcome-name"></span>?</h2>
+                <p>Total soal: 40 (PG, Benar/Salah, Isian Singkat).</p>
+                <button id="btn-latihan" class="main-btn">Mulai Latihan Sekarang</button>
+                
+                <hr> <h3>Lainnya</h3>
+                <button id="btn-feedback" class="secondary-btn"><i class="fab fa-whatsapp"></i> Beri Masukan / Saran</button>
+                <button id="btn-bug-report" class="secondary-btn"><i class="fas fa-bug"></i> Laporkan Bug / Soal</button>
+                <button id="btn-logout" class="secondary-btn">Keluar Sesi</button>
+            </div>
+        </div>
+
+        <div id="quiz-area" class="screen">
+            <div class="score-board">
+                <span id="q-number">Soal 1/40</span>
+                <span class="timer-display">Waktu: <b id="quiz-timer">00:00</b></span>
+                <span>Skor: <b id="current-score">0</b></span>
+            </div>
+
+            <div class="card question-card">
+                <p id="q-text">Isi Soal akan muncul di sini.</p>
+            </div>
+
+            <div id="answer-area" class="options-grid">
+                </div>
+            
+            <div id="visual-feedback" class="visual-feedback hidden">
+                <i id="feedback-icon" class="fas fa-check"></i>
+            </div>
+            
+        </div>
+
+        <div id="game-over" class="screen">
+            <div class="card result-card">
+                <h2>🎉 Latihan Selesai!</h2>
+                <p id="result-message-final" class="final-msg"></p>
+                
+                <div class="final-time-box">
+                    Waktu Pengerjaan: <br>
+                    <b id="time-taken-display">00:00</b>
+                </div>
+                
+                <h3>Analisis Kinerja</h3>
+                <div id="performance-chart" class="chart-container">
+                    </div>
+                
+                <div class="final-score-box">
+                    Total Skor: <br>
+                    <b id="final-score">0</b>
+                </div>
+                <div class="stats-detail">
+                    <p>✅ Benar: <span id="stat-correct">0</span></p>
+                    <p>❌ Salah: <span id="stat-incorrect">0</span></p>
+                    <p>Total Soal: <span id="stat-total">0</span></p>
+                </div>
+                
+                <button id="btn-copy-result" class="main-btn"><i class="fas fa-copy"></i> Salin Hasil</button>
+                <button onclick="showScreen('start-menu')" class="secondary-btn">Kembali ke Menu</button>
+                <button id="btn-feedback-final" class="secondary-btn"><i class="fab fa-whatsapp"></i> Bagikan/Feedback</button>
+            </div>
+        </div>
+        
+        <div id="disclaimer-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    ⚠️ Peringatan Penting
+                </div>
+                <div class="modal-body">
+                    <p>Website ini dibuat hanya sebagai sarana <b>latihan</b> untuk menjawab soal-soal berdasarkan kisi-kisi.</p>
+                    <p>Jangan sepenuhnya mengandalkan website ini, karena kamu tetap perlu belajar dan memahami materi yang sudah dicatat.</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-close-disclaimer">Saya Mengerti</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content" id="settings-content">
+                <div class="modal-header" style="background: var(--primary-color)">
+                    ⚙️ Pengaturan Aplikasi
+                </div>
+                <div class="modal-body">
+                    <div class="setting-item">
+                        <span>Mode Malam (Dark Mode)</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="dark-mode-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="document.getElementById('settings-modal').classList.add('hidden')">Tutup</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="info-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header" id="info-modal-header">
+                    💡 Penjelasan Tambahan
+                </div>
+                <div class="modal-body" id="info-modal-body">
+                    </div>
+                <div class="modal-footer">
+                    <button onclick="document.getElementById('info-modal').classList.add('hidden')">Tutup</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
